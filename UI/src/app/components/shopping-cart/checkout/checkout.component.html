@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <h2>Cart details</h2>
+        </div>
+
+<span *ngIf="service.showCartCount == 0">
+<p>No products in the cart yet.</p>
+<h6 (click)="goToProducts()">Start shopping</h6></span>
+<div class="row">
+    <div class="col" *ngFor="let details of service.listCart">
+        <div class="card shadow-sm">
+            <div class="card-body d-flex justify-content-between ">
+               
+              <p class="card-text">{{details.productTitle}}</p>
+              <p class="card-text">{{details.quantity}}</p>
+              <button type="button" class="btn btn-sm btn-outline-primary" (click)="deleteCart(details.productId)">Delete</button>
+            </div>
+          </div>
+    </div>
+    <div class="total-price d-flex" *ngIf="service.showCartCount > 0">Total Price: <p class="card-text">{{ getTotal() }}</p></div>
+</div>
+</div>
+
